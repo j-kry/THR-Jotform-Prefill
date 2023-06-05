@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accident/Incident</title>
+    <link rel="stylesheet" href="/stylesheets/styling.css">
+</head>
+
+<body>
+
+    <div class="form">
+
+        <h2>Employee Info: <span class="info">
+                <%= empName || 'NO VALUE' %>
+            </span></h2>
+        <h2>Notifying: <span class="info">
+                <%= notif || 'NO VALUE' %>
+            </span></h2>
+        <h2>Approval: <span class="info">
+                <%= sup || 'NO VALUE' %>
+            </span></h2>
+
+        <button class="button-19" onclick="window.location.href='<%= jotformURL %>'">Proceed to Jotform</button>
+
+        <button class="button-19" onclick="window.location.href='/accInc'">Go Back</button>
+
+    </div>
+
+
+
+</body>
+
+</html>

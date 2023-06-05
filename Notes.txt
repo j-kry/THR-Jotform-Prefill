@@ -1,0 +1,23 @@
+1. Loop while no director
+2. Change function to take 1 param idNum    
+    use url 1 if numId.length <= 5
+    else use url 2
+3. Check if title contains assistant || senior
+    then check if director
+    else
+    move up the chain
+4. Check with quality on what to do if the first person matched is a director - who to notify?
+
+
+DESIGN NOTES
+1. Only main page and 1 sub page
+2. On submission of employee id stay on the same page and hide the form and show the retrieved info
+    Person can verify that info is correct and can then continue on to jotform
+3. Display the submitter's name, their supervisor's name, and their director's name
+
+
+
+IMPROVEMENTS
+1. Validate input on same page
+2. switch over to react
+3. assistant vs program or does it not matter
