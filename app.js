@@ -5,6 +5,7 @@ require('dotenv').config()
 
 //Create the express app
 const app = express()
+const port = process.env.PORT || 3000
 
 //Set the view engine to ejs
 app.set('view engine', 'ejs')
@@ -32,4 +33,4 @@ app.get('/', (req, res) => {
 })
 
 //Start the server
-app.listen(3000)
+app.listen(port)
