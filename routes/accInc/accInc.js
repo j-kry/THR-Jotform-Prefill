@@ -215,7 +215,8 @@ router.post('/submit', async (req, res) => {
         res.locals.sup = info.employee.text.approveInfoText
         let notifEmail = encodeURIComponent(info.notify.email)
         let supEmail = encodeURIComponent(info.supervisor.email)
-        res.locals.jotformURL = `https://thresholds.jotform.com/231174858715968?notificationEmail=${notifEmail}&supervisorEmail=${supEmail}`
+        //res.locals.jotformURL = `https://thresholds.jotform.com/231174858715968?notificationEmail=${notifEmail}&supervisorEmail=${supEmail}`
+        res.locals.jotformURL = `https://thresholds.tfaforms.net/4?tfa_1=${supEmail}`
         res.render('accInc-submit')
     }
     catch (err) {
@@ -223,7 +224,9 @@ router.post('/submit', async (req, res) => {
         res.send(
             `<h1>Invalid Employee ID (${empId}) or could not contact UKG.</h1>
                 <br>
-                <h1>Please go back and try again.</h1>`
+                <h1>Please go back and try again.</h1>
+                <br>
+                <p>${err}</p>`
         )
     }
 
