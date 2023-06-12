@@ -215,8 +215,8 @@ router.post('/submit', async (req, res) => {
         res.locals.sup = info.employee.text.approveInfoText
         let notifEmail = encodeURIComponent(info.notify.email)
         let supEmail = encodeURIComponent(info.supervisor.email)
-        //res.locals.jotformURL = `https://thresholds.jotform.com/231174858715968?notificationEmail=${notifEmail}&supervisorEmail=${supEmail}`
-        res.locals.jotformURL = `https://thresholds.tfaforms.net/3?tfa_198=${supEmail}&tfa_196=${notifEmail}`
+        res.locals.jotformURL = `https://thresholds.jotform.com/231174858715968?notificationEmail=${notifEmail}&supervisorEmail=${supEmail}`
+        //res.locals.jotformURL = `https://thresholds.tfaforms.net/3?tfa_198=${supEmail}&tfa_196=${notifEmail}`
         res.render('accInc-submit')
     }
     catch (err) {
