@@ -44,6 +44,25 @@ const setText = (idNum, notifyObj, supObj, firstPersonFullName) => {
 
 async function checkFirstJobTitle(idNum) {
 
+
+    //Jotform Support Test
+    if (idNum === '99999') {
+        return {
+            employee: {
+                name: 'Forms Test',
+                text: 'Forms Test'
+            },
+            notify: {
+                name: 'Forms Notify',
+                email: 'enterprise-support@jotform.com'
+            },
+            supervisor: {
+                name: 'Forms Supervisor',
+                email: 'enterprise-support@jotform.com'
+            }
+        }
+    }
+
     let directorFound = false
 
     let firstPerson = await getUkgInfo(idNum)
@@ -67,7 +86,11 @@ async function checkFirstJobTitle(idNum) {
 
     const firstPersonFullName = firstPerson2.firstName + ' ' + firstPerson2.lastName
     const supervisorFullName = supervisorDetails.firstName + ' ' + supervisorDetails.lastName
-    const supervisorEmail = supervisorDetails.email
+
+    //Build the email address by removing spaces from both first and last names
+    const supFName = supervisorDetails.firstName.replace(/\s+/g, '')
+    const supLName = supervisorDetails.lastName.replace(/\s+/g, '')
+    const supervisorEmail = supFName + '.' + supLName + '@thresholds.org'
 
     //Who is being notfied of the form
     let notifyObj = {
@@ -83,9 +106,9 @@ async function checkFirstJobTitle(idNum) {
     //If chief level then only notify Virginia
     if (firstJobTitle.includes('chief')) {
 
-        notifyObj.email = '12552@thresholds.org'
+        notifyObj.email = 'Virginia.Rossi@thresholds.org'
         notifyObj.name = 'Virginia Rossi'
-        supObj.email = '12552@thresholds.org'
+        supObj.email = 'Virginia.Rossi@thresholds.org'
         supObj.name = 'Virginia Rossi'
         text = setText(idNum, notifyObj, supObj, firstPersonFullName)
 
@@ -216,7 +239,6 @@ router.post('/submit', async (req, res) => {
         let notifEmail = encodeURIComponent(info.notify.email)
         let supEmail = encodeURIComponent(info.supervisor.email)
         res.locals.jotformURL = `https://thresholds.jotform.com/231174858715968?notificationEmail=${notifEmail}&supervisorEmail=${supEmail}`
-        //res.locals.jotformURL = `https://thresholds.tfaforms.net/3?tfa_198=${supEmail}&tfa_196=${notifEmail}`
         res.render('accInc-submit')
     }
     catch (err) {
@@ -224,9 +246,7 @@ router.post('/submit', async (req, res) => {
         res.send(
             `<h1>Invalid Employee ID (${empId}) or could not contact UKG.</h1>
                 <br>
-                <h1>Please go back and try again.</h1>
-                <br>
-                <p>${err}</p>`
+                <h1>Please go back and try again.</h1>`
         )
     }
 
