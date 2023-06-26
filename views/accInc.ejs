@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Accident/Incident</title>
-    <link rel="stylesheet" href="/stylesheets/styling.css">
-</head>
+    <link rel="stylesheet" href="/stylesheets/styling.css" />
+  </head>
 
-<body>
+  <body>
     <div class="form">
+      <h1>Please Enter Your Employee ID#</h1>
 
-        <h1>Please Enter Your Employee ID#</h1>
+      <div id="formDiv">
+        <form id="empIdForm" method="post" action="/accInc/submit">
+          <input
+            type="number"
+            id="empIdInput"
+            name="empId"
+            data-maxlength="5"
+            oninput="this.value=this.value.slice(0,this.dataset.maxlength)"
+          />
+          <br />
+          <button class="button-19" type="submit" id="submitBtn">Submit</button>
+          <input type="submit" style="display: none" />
+        </form>
+      </div>
 
-        <div id="formDiv">
-            <form id="empIdForm" method="post" action="/accInc/submit">
-                <input type="number" id="empIdInput" name="empId" data-maxlength="5"
-                    oninput="this.value=this.value.slice(0,this.dataset.maxlength)">
-                <br>
-                <button class="button-19" type="submit" id="submitBtn">Submit</button>
-                <input type="submit" style="display: none">
-            </form>
-        </div>
-
-        <button class="button-19" onclick="window.location.href='/'">Go Back</button>
+      <button class="button-19" onclick="window.open('/')">Go Back</button>
     </div>
-
-</body>
-
+  </body>
 </html>
